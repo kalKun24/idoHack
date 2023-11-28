@@ -36,6 +36,7 @@ class ChallengeView(LoginRequiredMixin, ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['challenge'] = Challenge.objects.filter(identifier=self.kwargs['identifier'])
+        context['pkz'] = self.kwargs['pks']
         return context
     
     def post(self, request, *args, **kwargs):

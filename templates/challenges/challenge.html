@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+
 {% for item in challenge%}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'list-exercises' %}"><i class="fa fa-home">演習一覧</i></a></li>
+        <li class="breadcrumb-item"><a href="{%url 'try-exercises' pkz %}"><i class="fa fa-home">課題一覧</i></a></li>
+        <li class="breadcrumb-item active"><a><i class="fa fa-home">{{item.title}}</i></a></li>
+    </ol>
+</nav>
+
 <div class="card" style="height: auto;">
     <div class="card-header">
         <h1>{{item.title}}<h1>

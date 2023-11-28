@@ -3,6 +3,15 @@
 {% block title %}{{object.exercise}}{% endblock title %}
 
 {% block content %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'list-exercises' %}"><i class="fa fa-home">演習一覧</i></a></li>
+      <li class="breadcrumb-item active"><a><i class="fa fa-home">課題一覧</i></a></li>
+  </ol>
+</nav>
+
 <table class="table">
     <thead class="table-dark">
       <tr>
