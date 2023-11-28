@@ -59,6 +59,5 @@ class ChallengeView(LoginRequiredMixin, ListView):
                 
         return render(request, 'challenges/challenge.html', {'isCorrect': (submit == flag), 'challenge': challenge, 'answered': answered}, )
 
-def index_view(request):
-    return render(request, 'challenges/index.html')
+
 
