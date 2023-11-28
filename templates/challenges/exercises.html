@@ -8,13 +8,13 @@
     <div class="col">
       <div class="card border-dark text-black bg-light h-100">
         <!-- img src="..." class="card-img-top" alt="..." -->
-        <div class="card-header">{{exercise.exercise}}</div>
-        <div class="card-body">
+        <div class="card-header" style="background-color: #b4a6a1;">{{exercise.exercise}}</div>
+        <div class="card-body" style="background-color: #fffbfd;">
           <p class="card-text">{{exercise.disription | linebreaksbr}}</p>
           
         </div>
-        <div class="card-footer bg-transparent border-success">
-            <a href="{%url 'try-exercises' exercise.pk %}" class="btn btn-primary w-100">演習</a>
+        <div class="card-footer bg-transparent border-success" style="background-color: #f5e9e7;">
+            <a href="{%url 'try-exercises' exercise.pk %}" class="btn w-100" style="background-color: #b7a88d;">演習</a>
         </div>
       </div>
     </div>

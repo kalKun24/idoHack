@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'challenges.apps.ChallengesConfig',
     'accounts.apps.AccountsConfig',
+    'infomation.apps.InfomationConfig'
 ]
 
 MIDDLEWARE = [

@@ -3,7 +3,7 @@
 {% block title %}{{object.exercise}}{% endblock title %}
 
 {% block content %}
-<table class="table ">
+<table class="table">
     <thead class="table-dark">
       <tr>
         <th scope="col">#</th>
@@ -13,7 +13,7 @@
       </tr>
     </thead>
     {% for challenge in challenge_list%}
-    <tbody class="table-light">
+    <tbody class="table">
       <tr>
         <th scope="row">{{forloop.counter}}</th>
         {{pk}}

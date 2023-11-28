@@ -2,82 +2,88 @@
 
 {% block content %}
 {% for item in challenge%}
-
-    <!-- 課題名, 問題文表示 -->
-    <h1>{{item.title}}<h1>
-    <h2>問題文</h2>   
-    <h4>{{item.problem | safe}}</h3> 
-
-    <!-- ヒント表示 -->
-    {% if item.hint_one != "" %}
-    <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#Hint1" aria-expanded="false" aria-controls="collapseExample">
-          Hint1
-        </button>
-    </p>
-    <div class="collapse" id="Hint1">
-        <div class="card card-body">
-            {{item.hint_one}}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if item.hint_two != "" %}
-    <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#Hint2" aria-expanded="false" aria-controls="collapseExample">
-          Hint2
-        </button>
-    </p>
-    <div class="collapse" id="Hint2">
-        <div class="card card-body">
-            {{item.hint_two}}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if item.hint_three != "" %}
-    <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#Hint3" aria-expanded="false" aria-controls="collapseExample">
-          Hint3
-        </button>
-    </p>
-    <div class="collapse" id="Hint3">
-        <div class="card card-body">
-            {{item.hint_three}}
-        </div>
-      </div>
-    {% endif %}
-
-    <!-- FLAG提出 -->
-    <form method="POST">
-        {% csrf_token %}
-        <div class="input-group mb-3 ms-1 w-75">
-            <input type="text" name='submitFlag' class="form-control" placeholder="FLAG{xxxx}" aria-label="FLAG{xxxx}" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">フラグ提出</button>
-        </div>
-    </form>
-
-    <!-- バッジ -->
-    <button type="button" class="btn btn-lg btn-secondary" disabled>配点:{{item.score}}</button>
-    <button type="button" class="btn btn-secondary btn-lg" disabled>分野:{{item.category}}</button>
-
-    <!-- 正解/不正解表示 -->
-    {% if answered %}
-    <div class="alert alert-info" role="alert">
-        正解です！！
-        ※既に回答済みのため、点数は加算されません。
+<div class="card" style="height: auto;">
+    <div class="card-header">
+        <h1>{{item.title}}<h1>
     </div>
-    {% elif isCorrect %}
-    <div class="alert alert-success" role="alert">
-        正解です！！おめでとうございます！
+    <div class="card-body">
+        <!-- 課題名, 問題文表示 -->
+        <h4 class="card-title">問題</h4>
+        <p class="card-text">{{item.problem | safe | linebreaksbr}}</p>
+
+        <!-- ヒント表示 -->
+        {% if item.hint_one != "" %}
+        <p>
+            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#Hint1" aria-expanded="false" aria-controls="collapseExample" style="background-color: #c9b5aa;">
+            Hint1
+            </button>
+        </p>
+        <div class="collapse" id="Hint1">
+            <div class="card card-body">
+                {{item.hint_one}}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if item.hint_two != "" %}
+        <p>
+            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#Hint2" aria-expanded="false" aria-controls="collapseExample" style="background-color: #c9b5aa;">
+            Hint2
+            </button>
+        </p>
+        <div class="collapse" id="Hint2">
+            <div class="card card-body">
+                {{item.hint_two}}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if item.hint_three != "" %}
+        <p>
+            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#Hint3" aria-expanded="false" aria-controls="collapseExample" style="background-color: #c9b5aa;">
+            Hint3
+            </button>
+        </p>
+        <div class="collapse" id="Hint3">
+            <div class="card card-body">
+                {{item.hint_three}}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- FLAG提出 -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3 ms-1 w-75">
+                <input type="text" name='submitFlag' class="form-control" placeholder="FLAG{xxxx}" aria-label="FLAG{xxxx}" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary " type="submit" id="button-addon2">フラグ提出</button>
+            </div>
+        </form>
+
+        <!-- バッジ -->
+        <button type="button" class="btn btn-lg btn-secondary" disabled>配点:{{item.score}}</button>
+        <button type="button" class="btn btn-secondary btn-lg" disabled>分野:{{item.category}}</button>
     </div>
-    {% elif isCorrect == False %}
-    <div class="alert alert-danger" role="alert">
-        間違っています。
-    </div>
-    {% else %}
-    {% endif %}
+</div>
 {% endfor %}
+
+<!-- 正解/不正解表示 -->
+{% if isCorrect == False%}
+<div class="alert alert-danger m-2" role="alert">
+    <h5>間違っています。</h5>
+</div>
+{% elif answered %}
+<div class="alert alert-info m-2" role="alert">
+    <h5>正解です！！おめでとうございます！</h3>
+    ※既に回答済みのため、点数は加算されません。
+</div>
+{% elif isCorrect %}
+<div class="alert alert-success m-2" role="alert">
+    <h5>正解です！！おめでとうございます！</h5>
+</div>
+{% else %}
+{% endif %}
+
 {% endblock content %}
 
 
