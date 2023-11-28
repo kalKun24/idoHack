@@ -14,7 +14,7 @@ python3 manage.py runserver
 - [ ] ぱんくずリスト
 - [ ] トップページ
     - [ ] idoHackとは?
-    - [ ] お知らせ  
+    - [x] お知らせ  
     - [ ] 得点ランキング
 - [ ] Markdown記述可能(WriteUPs, 教科書)
     - [ ] 投稿者表示

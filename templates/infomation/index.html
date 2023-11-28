@@ -3,6 +3,37 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
+
+<div class="alert alert-success" role="alert" style="height: auto;">
+    <h1 class="alert-heading">idoHackへようこそ</h1>
+    <p>紹介文</p>
+    <hr>
+    <p class="mb-0">登録がお済でない方は画面右上「新規登録」から</p>
+</div>
+
+
+<h2>お知らせ</h2>
+<table class="table" style="height: auto;">   
+    <thead>
+      <tr>
+        <th scope="col">更新日時</th>
+        <th scope="col">タイトル</th>
+        <th scope="col">内容</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for infomation in  infomation_list%}
+        {% if forloop.counter <= 5 %}
+        <tr>
+            <th scope="row">{{infomation.updated_at | date:"n/j H:i"}}</th>
+            <td>{{infomation.title}}</td>
+            <td>{{infomation.message | safe | linebreaksbr}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+  </table>
+
 {% endblock content %}
 
 

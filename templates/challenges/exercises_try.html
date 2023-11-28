@@ -12,8 +12,8 @@
         <th scope="col">カテゴリ</th>
       </tr>
     </thead>
-    {% for challenge in challenge_list%}
     <tbody class="table">
+      {% for challenge in challenge_list%}
       <tr>
         <th scope="row">{{forloop.counter}}</th>
         {{pk}}
