@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{object.exercise}}{% endblock title %}
+
+{% block content %}
+<table class="table ">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">問題名</th>
+        <th scope="col">配点</th>
+        <th scope="col">カテゴリ</th>
+      </tr>
+    </thead>
+    {% for challenge in challenge_list%}
+    <tbody class="table-light">
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        {{pk}}
+        <td><a href="{%url 'do-challenge' pks challenge.identifier%}">{{challenge.title}}</a></td>
+        <td>{{challenge.score}}</td>
+        <td>{{challenge.category}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
