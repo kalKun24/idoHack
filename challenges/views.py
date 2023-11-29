@@ -58,7 +58,7 @@ class ChallengeView(LoginRequiredMixin, ListView):
                 
                 Submit.objects.create(user=ctx['user'], identifier=self.kwargs['identifier'])
                 
-        return render(request, 'challenges/challenge.html', {'isCorrect': (submit == flag), 'challenge': challenge, 'answered': answered}, )
+        return render(request, 'challenges/challenge.html', {'isCorrect': (submit == flag), 'challenge': challenge, 'answered': answered, 'pkz': self.kwargs['pks']}, )
 
 
 
