@@ -8,7 +8,7 @@ from .forms import SignupForm, ProfileForm
 from .models import CustomUser
 
 class SignupView(CreateView):
-    model = User
+    model = CustomUser
     form_class = SignupForm
     template_name = 'accounts/signup.html'
     success_url = reverse_lazy('index')

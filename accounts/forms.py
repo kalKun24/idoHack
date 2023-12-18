@@ -5,7 +5,7 @@ from django import forms
 
 class SignupForm(UserCreationForm): 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('username',)
         
 class ProfileForm(forms.ModelForm):
