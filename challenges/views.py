@@ -54,6 +54,10 @@ class ChallengeView(LoginRequiredMixin, ListView):
                 user.total_score += score
                 user.save()
                 
+                ch = Challenge.objects.get(identifier=self.kwargs['identifier'])
+                ch.cleared_counts += 1
+                ch.save()
+                
                 print(user.total_score)
                 
                 Submit.objects.create(user=ctx['user'], identifier=self.kwargs['identifier'])

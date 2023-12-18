@@ -54,6 +54,8 @@ class Challenge(models.Model):
     score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(3000)], default=0)
     flag = models.CharField(max_length=100, default='')
     visible = models.BooleanField(default=False)
+    
+    #ヒント
     hint_one = models.CharField(max_length=100, blank=True, default="")
     hint_two = models.CharField(max_length=100, blank=True, default="")
     hint_three = models.CharField(max_length=100, blank=True, default="")
@@ -61,6 +63,9 @@ class Challenge(models.Model):
     # 日時
     created_at = models.DateTimeField(auto_now_add=True) #データ挿入時
     updated_at = models.DateTimeField(auto_now=True) #データ更新時
+    
+    # 正解数
+    cleared_counts = models.IntegerField(default=0)
     
     def __str__(self):
         return self.title
