@@ -45,8 +45,8 @@
               {{user.username}}
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">プロフィール</a></li>
-              <li><a class="dropdown-item" href="#">基本設定</a></li>
+              <li><a class="dropdown-item" href="{%url 'accounts:profile'%}">プロフィール</a></li>
+              <li><a class="dropdown-item" href="">基本設定</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{%url 'accounts:logout'%}">ログアウト</a></li>
             </ul>
