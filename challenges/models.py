@@ -27,7 +27,8 @@ class Exercise(models.Model):
         default='Misc'
     )
     
-    thumbnail = models.ImageField(null=True, blank=True)
+    reference_url = models.URLField(default="")
+    explanation_url = models.URLField(default="")
     
     # 日時
     created_at = models.DateTimeField(auto_now_add=True) #データ挿入時
